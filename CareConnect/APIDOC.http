@@ -45,9 +45,10 @@ POST http://127.0.0.1:8000/api/appointments/
 Content-Type: application/json
 
 {
-    "patient_name" : "Nandana",
-    "phone":"12547896",
+    "patient_name" : "joel",
+    "phone":"5819255385",
     "doctor_id": 3,
     "appointment_date": "2026-10-30",
-    "problem": "Migrane"
+    "problem": "fever"
 }
+

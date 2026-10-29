@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from clinic.models import DoctorDb,AppointmentsDb
 from clinic.serializers import Doctor_Serializer,Appointment_Serializer
 from datetime import time,datetime,timedelta
+from rest_framework import serializers
 
 # Create your views here.
 
@@ -81,8 +82,16 @@ class AppointmentListCreateView(APIView):
 
                 form_data["token_number"] = last_appointment.token_number + 1
                 current_time = datetime.combine(appointment_date,last_appointment.appointment_time) 
-                form_data ["appointment_time"] = current_time + timedelta(minutes=15)
+                next_time = current_time + timedelta(minutes=15)
 
+                if next_time.time() == time(12,30):
+                    next_time = datetime.combine(appointment_date,time(13,30))
+
+                if next_time.time() == time(14,30):
+                    raise serializers.ValidationError('Slot not available for today....')
+                
+                form_data ["appointment_time"] = next_time.time()
+              
             qs = AppointmentsDb.objects.create(**form_data)
             serializer_instance = Appointment_Serializer(qs)
             return Response(data={
