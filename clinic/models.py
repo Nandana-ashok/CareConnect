@@ -21,10 +21,10 @@ class AppointmentsDb(models.Model):
     doctor_id = models.IntegerField()
     appointment_date = models.DateField()
     token_number = models.PositiveIntegerField(editable=False,null=True)
-    appointment_time = models.DateField(editable=False,null=True)
+    appointment_time = models.TimeField(editable=False,null=True)
     problem = models.TextField()
     status = models.CharField(max_length=100,default='pending')
-    prescription = models.TextField()
+    prescription = models.TextField(null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

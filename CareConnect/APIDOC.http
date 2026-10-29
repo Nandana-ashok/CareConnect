@@ -8,11 +8,11 @@ POST http://127.0.0.1:8000/api/doctors/
 Content-Type: application/json
 
 {
-    "doctor_name": "Ajas ajmal",
-    "specialization": "Orthology",
-    "experience": 14,
+    "doctor_name": "Jikku Vijay",
+    "specialization": "pedology",
+    "experience": 10,
     "hospital": "Amrita",
-    "consultation_fee": 800
+    "consultation_fee": 1000
 }
 
 ### 
@@ -39,3 +39,15 @@ DELETE http://127.0.0.1:8000/api/doctors/2/
 ###
 GET http://127.0.0.1:8000/api/appointments/
 Accept: application/json
+
+###
+POST http://127.0.0.1:8000/api/appointments/
+Content-Type: application/json
+
+{
+    "patient_name" : "Nandana",
+    "phone":"12547896",
+    "doctor_id": 3,
+    "appointment_date": "2026-10-30",
+    "problem": "Migrane"
+}

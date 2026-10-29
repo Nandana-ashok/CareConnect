@@ -11,5 +11,5 @@ class Doctor_Serializer(ModelSerializer):
 class Appointment_Serializer(ModelSerializer):
     class Meta:
         model = AppointmentsDb
-        field = "__all__"
+        fields = "__all__"
         read_only_fields = ["id"]
